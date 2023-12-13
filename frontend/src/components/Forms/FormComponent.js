@@ -31,7 +31,7 @@ const FormComponent = () => {
 
       <div className=" mb-3">
         <label for="exampleFormControlInput1" className="form-label">
-          Sector <span className="text-danger">*</span>
+          Sectors <span className="text-danger">*</span>
         </label>
         <Select
           options={options}
