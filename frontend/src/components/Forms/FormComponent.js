@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-dropdown-select";
+import MenuItems from "../MenuItems/MenuItems";
+import MultiSelect from "../MultiSelect";
 
 const options = [
   {
@@ -9,6 +11,53 @@ const options = [
   {
     value: 2,
     label: "Ervin Howell",
+  },
+];
+
+const menuItems = [
+  {
+    title: "Home",
+  },
+  {
+    title: "Services",
+    submenu: [
+      {
+        title: "web design",
+      },
+      {
+        title: "web development",
+        submenu: [
+          {
+            title: "Frontend",
+          },
+          {
+            title: "Backend",
+            submenu: [
+              {
+                title: "NodeJS",
+              },
+              {
+                title: "PHP",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "SEO",
+      },
+    ],
+  },
+  {
+    title: "About",
+    submenu: [
+      {
+        title: "Who we are",
+      },
+      {
+        title: "Our values",
+      },
+    ],
   },
 ];
 
@@ -29,7 +78,7 @@ const FormComponent = () => {
         />
       </div>
 
-      <div className=" mb-3">
+      <div className=" mb-3 ">
         <label for="exampleFormControlInput1" className="form-label">
           Sectors <span className="text-danger">*</span>
         </label>
@@ -39,7 +88,17 @@ const FormComponent = () => {
           multi="true"
           required="true"
         />
-        {console.log(values)}
+        {/* <div className="nav-area">
+          <ul className="menus">
+            {menuItems.map((menu, index) => {
+              const depthLevel = 0;
+              return (
+                <MenuItems items={menu} key={index} depthLevel={depthLevel} />
+              );
+            })}
+          </ul>
+        </div> */}
+        <MultiSelect />
       </div>
       <div class="form-check mb-3">
         <input
