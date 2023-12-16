@@ -4,11 +4,12 @@ import SubSubSectorSchema from "../models/SubSubSectorSchema.js";
 import SubSubSubSectorSchema from "../models/SubSubSubSectorSchema.js";
 
 export const addSectorController = async (req, res) => {
-  const { title, subSectors } = req.body;
+  const { title } = req.body;
+
   try {
+    // await SubSector.create(subSectors)
     const newSector = new Sector({
       title,
-      subSectors,
     });
     await newSector.save();
 
@@ -28,12 +29,11 @@ export const addSectorController = async (req, res) => {
 };
 
 export const addSubSectorController = async (req, res) => {
-  const { title, sector, subSubSectors } = req.body;
+  const { title, sectorId } = req.body;
   try {
     const newSubSector = new SubSector({
       title,
-      sector,
-      subSubSectors,
+      sectorId,
     });
     await newSubSector.save();
 
@@ -53,13 +53,12 @@ export const addSubSectorController = async (req, res) => {
 };
 
 export const addSubSubSectorController = async (req, res) => {
-  const { title, subSector, subSubSubSectors } = req.body;
+  const { title, subSectorId } = req.body;
 
   try {
     const newSubSubSector = new SubSubSectorSchema({
       title,
-      subSector,
-      subSubSubSectors,
+      subSectorId,
     });
 
     await newSubSubSector.save();
@@ -80,11 +79,11 @@ export const addSubSubSectorController = async (req, res) => {
 };
 
 export const addSubSubSubSectorController = async (req, res) => {
-  const { title, subSubSector } = req.body;
+  const { title, subSubSectorId } = req.body;
   try {
     const newSubSubSector = new SubSubSubSectorSchema({
       title,
-      subSubSector,
+      subSubSectorId,
     });
     await newSubSubSector.save();
 
@@ -102,26 +101,29 @@ export const addSubSubSubSectorController = async (req, res) => {
     });
   }
 };
-/* 
-    
-  const subSectors =  {
-    title: 'sector name',
-    subSectors: [
-      {
-        _id:['subSectorId'],
-        
-        subSubSectors: [
-          {
-            title:['subSubSectorId']
-            subSubSubSectors: [
-              {
-                _id:['subSubSubSectorId'],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-    
-    */
+
+export const getAllSectorsController = async (req, res) => {
+  try {
+    const sectors = await Sector.find({});
+    const subSectors = await SubSector.find({}).populate("sector");
+    const subSubSectors = await SubSubSectorSchema.find({}).populate(
+      "subSector"
+    );
+    const subSubSubSectors = await SubSubSubSectorSchema.find({}).populate(
+      "subSubSector"
+    );
+
+    return res.status(200).json({
+      success: true,
+      statusCode: 200,
+      data: { sectors, subSectors, subSubSectors, subSubSubSectors },
+    });
+  } catch (error) {
+    console.log("error", error);
+    return res.status(500).json({
+      success: false,
+      statusCode: 500,
+      message: "Internal server error, try again later",
+    });
+  }
+};
