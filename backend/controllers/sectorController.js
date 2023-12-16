@@ -3,11 +3,10 @@ import SubSector from "../models/SubSectorSchema.js";
 import SubSubSectorSchema from "../models/SubSubSectorSchema.js";
 import SubSubSubSectorSchema from "../models/SubSubSubSectorSchema.js";
 
-export const addSectorController = async (req, res) => {
+/* export const addSectorController = async (req, res) => {
   const { title } = req.body;
 
   try {
-    // await SubSector.create(subSectors)
     const newSector = new Sector({
       title,
     });
@@ -100,7 +99,7 @@ export const addSubSubSubSectorController = async (req, res) => {
       message: "Internal server error, try again later",
     });
   }
-};
+}; */
 
 export const getAllSectorsController = async (req, res) => {
   try {

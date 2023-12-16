@@ -8,9 +8,6 @@ const SubSubSectorSchema = new mongoose.Schema(
       ref: "SubSector",
       required: true,
     },
-    /* subSubSubSectors: [
-      { type: mongoose.Types.ObjectId, ref: "SubSubSubSector" },
-    ], */
   },
   {
     timestamps: true,
