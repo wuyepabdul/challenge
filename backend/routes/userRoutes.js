@@ -8,11 +8,11 @@ import {
 
 const router = express.Router();
 
+router.get("/all", getAllUsersController);
+
 router.post("/", addUserController);
 
 router.get("/:id", getSingleUserController);
-
-router.get("/all", getAllUsersController);
 
 router.put("/:id", updateUserController);
 
