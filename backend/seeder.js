@@ -44,15 +44,6 @@ const importData = async () => {
       const manufacturing = await SectorSchema.findOne({
         title: "Manufacturing",
       });
-      const services = await SectorSchema.findOne({
-        title: "Services",
-      });
-      const others = await SectorSchema.findOne({
-        title: "Others",
-      });
-      if (others) {
-        await SubSectorSchema.insertMany(otherSubSectorData(others._id));
-      }
 
       if (manufacturing) {
         const createdManufacturingSubSectors = await SubSectorSchema.insertMany(
@@ -139,6 +130,17 @@ const importData = async () => {
         }
       }
 
+      const others = await SectorSchema.findOne({
+        title: "Other",
+      });
+      if (others) {
+        await SubSectorSchema.insertMany(otherSubSectorData(others._id));
+      }
+
+      const services = await SectorSchema.findOne({
+        title: "Service",
+      });
+
       if (services) {
         const createdServicesSubSectors = await SubSectorSchema.insertMany(
           serviceSubSectorData(services._id)
@@ -157,16 +159,18 @@ const importData = async () => {
           await SubSubSectorSchema.insertMany(
             transportAndLogisticsSubSubSectorData(transportAndLogistics._id)
           );
+        } else {
+          console.log("error creating services sub sub sector");
         }
       }
     } else {
-      console.log("Error occured creating sectors");
+      console.log("Error occured creating Services");
     }
 
     console.log("DataImported:");
     process.exit();
   } catch (error) {
-    console.log(`Data Import error: ${error.message}`);
+    console.log(`Data Import error: ${error}`);
     process.exit(1);
   }
 };

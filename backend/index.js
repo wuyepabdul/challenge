@@ -24,8 +24,8 @@ dbConnect();
 app.use(express.json());
 app.use(cors(corsOptions));
 
-app.use("/api/v1/user", userRoutes);
-app.use("/api/v1/sector", sectorRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/sector", sectorRoutes);
 
 app.listen(port, () => {
   console.log("server listening at " + port);

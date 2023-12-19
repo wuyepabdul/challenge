@@ -176,19 +176,19 @@ export const woodSubSubSectorData = (id) => {
 
 export const InfoTechTelcomSubSubSectorData = (id) => {
   return [
-    { title: "Data processing, Web Portals, E-marketing", subSubSector: id },
-    { title: "Programming,Consultancy", subSubSector: id },
-    { title: "Software, Hardware", subSubSector: id },
-    { title: "Telecommunications", subSubSector: id },
+    { title: "Data processing, Web Portals, E-marketing", subSector: id },
+    { title: "Programming,Consultancy", subSector: id },
+    { title: "Software, Hardware", subSector: id },
+    { title: "Telecommunications", subSector: id },
   ];
 };
 
 export const transportAndLogisticsSubSubSectorData = (id) => {
   return [
-    { title: "Air", subSubSector: id },
-    { title: "Rail", subSubSector: id },
-    { title: "Road", subSubSector: id },
-    { title: "Water", subSubSector: id },
+    { title: "Air", subSector: id },
+    { title: "Rail", subSector: id },
+    { title: "Road", subSector: id },
+    { title: "Water", subSector: id },
   ];
 };
 

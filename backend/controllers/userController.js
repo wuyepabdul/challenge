@@ -1,13 +1,12 @@
 import User from "../models/UserSchema.js";
 
 export const addUserController = async (req, res) => {
-  const { name, sectors, termsAndConditions } = req.body;
-
+  const { name, dropDownData, terms } = req.body;
   try {
     const user = new User({
       name,
-      sectors,
-      termsAndConditions,
+      sectors: dropDownData,
+      termsAndConditions: terms,
     });
     await user.save();
 
@@ -17,7 +16,6 @@ export const addUserController = async (req, res) => {
       message: "User Successfully Created",
     });
   } catch (error) {
-    console.log("error", error);
     return res.status(500).json({
       success: false,
       statusCode: 500,
@@ -27,21 +25,22 @@ export const addUserController = async (req, res) => {
 };
 
 export const updateUserController = async (req, res) => {
-  const id = req.params.id;
-  let userDetails = req.body;
-  try {
-    const updatedUser = await User.findByIdAndUpdate(
-      id,
-      { $set: userDetails },
-      { new: true }
-    );
+  const { name, dropDownData, terms } = req.body;
 
-    return res.status(201).json({
-      success: true,
-      statusCode: 201,
-      message: "Update Successful",
-      data: updatedUser,
-    });
+  try {
+    const user = await User.findById(req.params.userId);
+    if (user) {
+      user.name = name;
+      user.sectors = dropDownData;
+      user.termsAndConditions = terms;
+
+      await user.save();
+      return res.status(201).json({
+        success: true,
+        statusCode: 201,
+        message: "User Successfully Updated",
+      });
+    }
   } catch (error) {
     return res.status(500).json({
       success: false,
