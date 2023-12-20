@@ -11,7 +11,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: ["https://challenge-mern-frontend.vercel.app/"],
+  origin: ["https://challenge-mern-frontend.vercel.app"],
   methods: ["POST", "GET", "PUT"],
   credentials: true,
 };
