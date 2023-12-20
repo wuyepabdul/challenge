@@ -1,9 +1,8 @@
 import React from "react";
 import HomeComponent from "./Pages/Home/HomeComponent";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import EditFormComponent from "./components/Forms/EditFormComponent"
+import EditFormComponent from "./components/Forms/EditFormComponent";
 
 const App = () => {
   return (

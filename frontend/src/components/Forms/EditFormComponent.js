@@ -109,7 +109,7 @@ const EditFormComponent = () => {
           </tbody>
         </table>
       </div>
-      <div className=" border col-md-6 col-12 p-4">
+      <div className="card border col-md-6 col-12 ">
         <form className=" p-4">
           <ToastContainer />
           <div className=" mb-3 col-lg-12 col-md-12 col-12">

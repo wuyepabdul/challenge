@@ -5,24 +5,8 @@ body {
   box-sizing: border-box;
 }
 
-/* .dropdown .dropdown-menu {
-  display: none;
+.row {
+  margin: 0;
+  padding: 0;
+  --mdb-gutter-x: 0 !important;
 }
-
-.dropdown:hover > .dropdown-menu,
-.dropend:hover > .dropdown-menu {
-  display: block;
-  margin-top: 0.125em;
-} */
-
-/* 
-
-
-.dropend:hover:hover > .dropdown-menu {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  margin-left: 0.125em;
-}
-
- */
