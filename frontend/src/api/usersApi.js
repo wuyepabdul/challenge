@@ -15,7 +15,7 @@ export const addUser = async (data) => {
 export const getAllUsers = async () => {
   try {
     const users = await axios.get(
-      "https://challenge-mern-api.vercel.appapi/user/all"
+      "https://challenge-mern-api.vercel.app/api/user/all"
     );
     return users;
   } catch (error) {
@@ -26,7 +26,7 @@ export const getAllUsers = async () => {
 export const updateUser = async (id, data) => {
   try {
     const updatedUser = await axios.put(
-      `https://challenge-mern-api.vercel.appapi/user/${id}`,
+      `https://challenge-mern-api.vercel.app/api/user/${id}`,
       data
     );
     return updatedUser;
