@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 export const addUser = async (data) => {
   try {
     const newUser = await axios.post(
