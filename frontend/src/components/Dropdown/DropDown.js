@@ -21,7 +21,7 @@ export default function DropDown({ sectorsData, getDataFromDropdown }) {
                 <MDBDropdownMenu responsive="lg-end">
                   {sector.subSectors.map((subSector) =>
                     subSector.subSubSectors.length > 0 ? (
-                      <MDBDropdown>
+                      <MDBDropdown key={subSector._id}>
                         <MDBDropdownToggle
                           tag="ul"
                           style={{ cursor: "pointer" }}
@@ -31,7 +31,7 @@ export default function DropDown({ sectorsData, getDataFromDropdown }) {
                         <MDBDropdownMenu responsive="lg-end">
                           {subSector.subSubSectors.map((subSubSector) =>
                             subSubSector.subSubSubSectors.length > 0 ? (
-                              <MDBDropdown>
+                              <MDBDropdown key={subSubSector._id}>
                                 <MDBDropdownToggle
                                   tag="ul"
                                   style={{ cursor: "pointer" }}
@@ -48,6 +48,7 @@ export default function DropDown({ sectorsData, getDataFromDropdown }) {
                                             subSubSubSector.title
                                           )
                                         }
+                                        key={subSubSubSector._id}
                                       >
                                         {subSubSubSector.title}
                                       </MDBDropdownItem>
