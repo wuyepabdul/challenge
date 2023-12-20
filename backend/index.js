@@ -15,7 +15,7 @@ const corsOptions = {
 };
 
 app.get("/api", (req, res) => {
-  res.send("Welcome to medicare API");
+  res.send("Welcome to challenge API");
 });
 
 dbConnect();
