@@ -60,74 +60,76 @@ const FormComponent = ({ sectorsData }) => {
   return (
     <div className="card border col-md-6 col-12">
       <ToastContainer />
-      {sectorsData !== null ? (
-        <form className=" p-4">
-          <div className=" mb-3 col-lg-12 col-md-12 col-12">
-            <label for="exampleFormControlInput1" className="form-label">
-              Name <span className="text-danger">*</span>
-            </label>
-            <input
-              type="text"
-              className="form-control "
-              id="name"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-          </div>
+      <form className=" p-4">
+        <div className=" mb-3 col-lg-12 col-md-12 col-12">
+          <label for="exampleFormControlInput1" className="form-label">
+            Name <span className="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            className="form-control "
+            id="name"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
 
-          <div className=" mb-3 col-md-12 col-12">
-            <label for="exampleFormControlInput1" className="form-label">
-              Sectors <span className="text-danger">*</span>
-            </label>
-            <div>
-              {dropDownData.map((item) => (
-                <div
-                  key={item}
-                  className=" position-relative badge bg-primary text-wrap mx-2 my-2 py-2 px-3"
-                  style={{ width: "6rem;" }}
-                >
-                  {item}
-                  <span
-                    onClick={() => handleRemoveItem(item)}
-                    className="position-absolute top-0 start-100 translate-middle  p-2 bg-danger border border-light rounded-circle"
-                    style={{ cursor: "pointer" }}
+        <div className=" mb-3 col-md-12 col-12">
+          <label for="exampleFormControlInput1" className="form-label">
+            Sectors <span className="text-danger">*</span>
+          </label>
+          {sectorsData !== null ? (
+            <>
+              <div>
+                {dropDownData.map((item) => (
+                  <div
+                    key={item}
+                    className=" position-relative badge bg-primary text-wrap mx-2 my-2 py-2 px-3"
+                    style={{ width: "6rem;" }}
                   >
-                    <span className="visually-hidden">New alerts</span>x
-                  </span>
-                </div>
-              ))}
-            </div>
-            <DropDown
-              sectorsData={sectorsData}
-              getDataFromDropdown={getDataFromDropdown}
-            />
-          </div>
-          <div className="form-check mb-3">
-            <input
-              name="terms"
-              className="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-              onChange={(e) => setTerms(!terms)}
-            />
-            <label className="form-check-label" for="flexCheckDefault">
-              Agree to terms <span className="text-danger">*</span>
-            </label>
-          </div>
+                    {item}
+                    <span
+                      onClick={() => handleRemoveItem(item)}
+                      className="position-absolute top-0 start-100 translate-middle  p-2 bg-danger border border-light rounded-circle"
+                      style={{ cursor: "pointer" }}
+                    >
+                      <span className="visually-hidden">New alerts</span>x
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <DropDown
+                sectorsData={sectorsData}
+                getDataFromDropdown={getDataFromDropdown}
+              />
+            </>
+          ) : (
+            "loading sectors"
+          )}
+        </div>
+        <div className="form-check mb-3">
+          <input
+            name="terms"
+            className="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+            onChange={(e) => setTerms(!terms)}
+          />
+          <label className="form-check-label" for="flexCheckDefault">
+            Agree to terms <span className="text-danger">*</span>
+          </label>
+        </div>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
-            Save
-          </button>
-        </form>
-      ) : (
-        "loading form.."
-      )}
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleSubmit}
+        >
+          Save
+        </button>
+      </form>
     </div>
   );
 };
