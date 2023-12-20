@@ -2,7 +2,10 @@ import axios from "axios";
 
 export const addUser = async (data) => {
   try {
-    const newUser = await axios.post("/api/user", data);
+    const newUser = await axios.post(
+      "https://challenge-mern-api.vercel.app/api/user",
+      data
+    );
     return newUser;
   } catch (error) {
     return error.data;
@@ -11,7 +14,9 @@ export const addUser = async (data) => {
 
 export const getAllUsers = async () => {
   try {
-    const users = await axios.get("api/user/all");
+    const users = await axios.get(
+      "https://challenge-mern-api.vercel.appapi/user/all"
+    );
     return users;
   } catch (error) {
     return error.data;
@@ -20,7 +25,10 @@ export const getAllUsers = async () => {
 
 export const updateUser = async (id, data) => {
   try {
-    const updatedUser = await axios.put(`api/user/${id}`, data);
+    const updatedUser = await axios.put(
+      `https://challenge-mern-api.vercel.appapi/user/${id}`,
+      data
+    );
     return updatedUser;
   } catch (error) {
     return error.data;
