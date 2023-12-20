@@ -16,7 +16,7 @@ const corsOptions = {
   credentials: true,
 };
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
   res.send("Welcome to challenge API");
 });
 
